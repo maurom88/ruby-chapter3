@@ -1,4 +1,4 @@
-class Dog
+class Animal
 
     attr_reader :name, :age
 
@@ -17,7 +17,7 @@ class Dog
     end
 
     def talk
-        puts "#{@name says Bark!}"
+        puts "#{@name} says Bark!"
     end
 
     def move(destination)
@@ -29,3 +29,45 @@ class Dog
     end
 
 end
+
+class Dog < Animal
+
+    def to_s
+        "#{@name} the dog, age #{age}"
+    end
+
+end
+
+class Bird < Animal
+    def talk
+        puts "#{@name} says Chirp!"
+    end
+end
+
+class Cat < Animal
+    def talk
+        puts "#{@name} says Meow!"
+    end
+end
+
+class Armadillo < Animal
+    def move(destination)
+        puts "#{@name} unrolls!"
+        super(destination)
+        super
+    end
+end
+
+armadillo = Armadillo.new
+armadillo.name = "Army"
+armadillo.move("store")
+
+lucy = Dog.new
+lucy.name = "Lucy"
+lucy.age = 4
+
+rex = Dog.new
+rex.name = "Rex"
+rex.age = 2
+
+puts lucy, rex
